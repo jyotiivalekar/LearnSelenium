@@ -1,3 +1,6 @@
+/* @Description: s consists of most commonly used functions.   
+  *@Author :  Jyoti 
+ */
 package functionlibrary;
 
 import java.io.File;
@@ -24,7 +27,13 @@ public class FunctionLibrary {
 
 	public WebDriver driver;
 	GlobalVariable gobalvariable = new GlobalVariable();
-	  
+
+	
+/* @Description: In this Function we are going to log-in int Gmail account
+	 * @Author : Jyoti 
+	 * @Param  : WebDriver driver, String UserName, String PassWord
+	 * @Return : boolean (True / False ) based script status execution.
+ * */	
 	public Boolean Gmail_Login (WebDriver driver)
 	{ 
 		try 
@@ -68,7 +77,11 @@ public class FunctionLibrary {
 			}
 	}
 	
-	//read test data from Excel sheet  and store that in string variable.
+	/* @Description: read test data from Excel sheet  and store that in string variable.
+	 * @Author :  Jyoti 
+	 * @Param  : String SheetName, String Column, String Testdata
+	 * @Return : String.
+	 * */
 			public String ReadFromExcelFileData(String SheetName, String Column, int RowNo)
 				{
 					try {
@@ -105,8 +118,11 @@ public class FunctionLibrary {
 					}
 				}
 			
-/*This Function is for Mail send through Script if @Test get fail (send PrintTrack through mail)  
- @Param  : In this function we need to pass only fromMail,ToMail, Exception*/ 
+/* @Description: This Function is for Mail send through Script if @Test get fail (send PrintTrack through mail)  
+  * @Author : Jyoti 
+  * @Param  : In this function we need to pass only fromMail,ToMail, Exception 
+  * @Return : void.
+* */
  
 
 public void SendMail(String fromMail, String tomail, Exception e, String MethodName) {
@@ -131,4 +147,78 @@ public void SendMail(String fromMail, String tomail, Exception e, String MethodN
 			mex.printStackTrace();
 	   }
 }
+
+
+/* @Description: In this function we need to pass only locator of particular element for which we want to wait and  also  Wait for Element function is used for verification of Element load. 
+ * @Author :  Jyoti 
+ * @Param  : WebDriver driver, By by
+ * @Return : boolean (True / False ) based script status execution.
+ * */
+public Boolean WaitForElement(WebDriver driver, String locator) 
+//public Boolean WaitForElement(WebDriver driver, By by)  //by is type
+{
+	try {
+		 Boolean isElementPresent = false;
+		 Boolean isElementVisible = false;
+		 /* Boolean isElementPresent = false;
+		 for (int count = 0; !isElementPresent && count <=150; Count ++)
+		 {
+		  driver.findElement(by. isDisplayed());
+		  isE;ementPresent = True;
+		  if (!isElementPresent) 
+		  {
+			Try
+			{
+			Thread.sleep(1000);
+			}
+			Catch (Exception e) 
+			{ e.PrintstackTrace();
+			}
+			Count++
+		 }
+		 }
+		 return True;
+		 }
+		 Catch (NoSuchFrameException e) {} 
+			}
+		 
+		*/ 
+	
+		int count = 0;
+		do {
+			isElementPresent = driver.findElement(By.xpath(locator)).isDisplayed();
+
+			if (isElementPresent == null) {
+				Thread.sleep(1000);
+				count++;
+			} else {
+		
+				isElementVisible = driver.findElement(By.xpath(locator)).isEnabled();
+				if (isElementVisible == null) 
+				{
+					Thread.sleep(1000);
+					count++;
+				}
+
+			}
+
+		} 
+		while (isElementPresent == null && count <= 120);
+		    if (count == 120) {
+			return false;
+		} else {
+			return true;
+		}
+	} catch (Exception e) 
+	{
+		// TO DO Auto-generated catch block
+		e.printStackTrace();
+		return false;
+	}
+
+}
+
+
+
+
 }

@@ -1,3 +1,6 @@
+/* @Description: Following code helps user to Send an email through Gmail account  
+	 * @Author :  Jyoti 
+ */
 package externel_mailing;
 
 import java.util.Properties;
@@ -12,8 +15,8 @@ import javax.mail.internet.MimeMessage;
 
 public class SendMail {
 	public static void main(String args[]){
-	final String username = "christinn.scarlett@gmail.com";
-	final String password = "scarlet247";
+	final String username = "<E-mail>@gmail.com";
+	final String password = "<Password>";
 	Properties props = new Properties();
 	props.put("mail.smtp.auth", "true");
 	props.put("mail.smtp.starttls.enable", "true");
@@ -28,12 +31,12 @@ public class SendMail {
 	
 	try {
 		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("christinn.scarlett@gmail.com"));
-		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("christinn.scarlett@gmail.com"));
+		message.setFrom(new InternetAddress("<From E-mail>@gmail.com"));
+		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("To E-Mail ID"));
 		message.setSubject("Testing Subject");
-		message.setText("Dear Mail Crawler,"+ "\n\n No spam to my email, please! Zinga la la !!");
+		message.setText("Dear,"+ "\n\n Yupiee This mail is sent through Selenium Webdriver!");
 		Transport.send(message);
-		System.out.println("Done");
+		System.out.println("Mail is sucesfully sent");
 	} catch (MessagingException e) {
 			throw new RuntimeException(e);
 	}
