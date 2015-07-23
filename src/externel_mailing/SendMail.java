@@ -1,5 +1,5 @@
 /* @Description: Following code helps user to Send an email through Gmail account  
-	 * @Author :  Jyoti 
+	 * @Author :  Gaurav Singh 
  */
 package externel_mailing;
 
