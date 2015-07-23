@@ -105,11 +105,9 @@ public class FunctionLibrary {
 					}
 				}
 			
-/* @Description: This Function is for Mail send through Script if @Test get fail (send PrintTrack through mail)  
- * @Author :  Ulka 
- * @Param  : In this function we need to pass only fromMail,ToMail, Exception 
- * @Return : void.
- * */
+/*This Function is for Mail send through Script if @Test get fail (send PrintTrack through mail)  
+ @Param  : In this function we need to pass only fromMail,ToMail, Exception*/ 
+ 
 
 public void SendMail(String fromMail, String tomail, Exception e, String MethodName) {
 	String host = ReadFromExcelFileData("FailedScript", "hostname", 1);
